@@ -1,9 +1,7 @@
-<template>
-  <Tutorial/>
-</template>
-
 <script>
 export default {
-  name: 'IndexPage'
+  middleware({ redirect }) {
+    redirect("/main");
+  }
 }
 </script>
