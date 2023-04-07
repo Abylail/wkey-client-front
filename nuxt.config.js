@@ -24,6 +24,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "@/plugins/global",
+    "@/plugins/apiLayer",
   ],
 
   styleResources: {
@@ -45,6 +46,17 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
   ],
+
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    "/client-api": {
+      target: process.env.BACKEND_URL,
+      pathRewrite: {"/client-api": "/api/v1"}
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

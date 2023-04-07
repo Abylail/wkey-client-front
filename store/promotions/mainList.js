@@ -16,7 +16,11 @@ export const mutations = {
 
 export const actions = {
   // Запросить список основных акций
-  fetchList() {
-
+  async fetchList({ commit, state }) {
+    if (state.list) return;
+    await this.$api.$get("/client-api/stock/promotion/get")
+      .then(({body, err}) => {
+        if (!err) commit("set", ["list", body]);
+      })
   }
 }
