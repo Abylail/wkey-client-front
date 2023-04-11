@@ -18,7 +18,7 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
-  name: "categoryList",
+  name: "categoryMiniList",
   data: () => ({
     isLoading: false,
   }),

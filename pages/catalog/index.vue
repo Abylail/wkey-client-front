@@ -1,16 +1,30 @@
 <template>
   <div class="catalog">
-
+    <base-header title="Каталог"/>
+    <search-bar :search-text.sync="searchText"/>
+    <catalog-item
+      v-for="category in categories" :key="category.code"
+      :to="`/catalog/category/${category.code}`"
+      :title="category.title"
+      :image="category.image"
+    />
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import BaseHeader from "@/components/base/BaseHeader";
+import SearchBar from "@/components/common/category/searchBar";
+import CatalogItem from "@/components/common/catalog/catalogItem";
 
 export default {
   name: "index",
+  components: {CatalogItem, SearchBar, BaseHeader},
   data: () => ({
     isLoading: false,
+
+    // Поисковый текст
+    searchText: null,
   }),
   computed: {
     ...mapGetters({
