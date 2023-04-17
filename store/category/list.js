@@ -22,5 +22,5 @@ export const actions = {
       .then(({err, body}) => {
         if (!err) commit("set", ["list", body]);
       })
-  }
+  },
 }

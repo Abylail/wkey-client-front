@@ -5,8 +5,9 @@
     <catalog-item
       v-for="category in categories" :key="category.code"
       :to="`/catalog/category/${category.code}`"
-      :title="category.title"
+      :title="category.title_ru"
       :image="category.image"
+      @beforeGo="bridgeInfo(category)"
     />
   </div>
 </template>
@@ -34,6 +35,7 @@ export default {
   methods: {
     ...mapActions({
       _fetchCategories: "category/list/fetchList",
+      _bridgeInfo: "category/item/bridgeInfo",
     }),
 
     // Запросить список категорий
@@ -41,6 +43,11 @@ export default {
       this.isLoading = true;
       await this._fetchCategories();
       this.isLoading = false;
+    },
+
+    // Мост информации
+    bridgeInfo(category) {
+      this._bridgeInfo(category);
     }
   },
   mounted() {

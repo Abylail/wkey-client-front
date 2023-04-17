@@ -1,9 +1,9 @@
 <template>
-  <nuxt-link class="catalog-item" :to="to">
+  <a class="catalog-item" @click="goHandle()">
     <img class="catalog-item__image" v-if="image" :src="imageSrc" alt="catalog"/>
     <div class="catalog-item__title">{{ title }}</div>
     <base-icon>arrow</base-icon>
-  </nuxt-link>
+  </a>
 </template>
 
 <script>
@@ -26,6 +26,13 @@ export default {
     // Путь к картинке
     imageSrc() {
       return process.env.CDN_URL + this.image;
+    }
+  },
+  methods: {
+    // Перейти
+    goHandle() {
+      this.$emit("beforeGo");
+      this.$router.push(this.to);
     }
   }
 }

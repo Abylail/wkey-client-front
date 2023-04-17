@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    Подкатегория
   </div>
 </template>
 

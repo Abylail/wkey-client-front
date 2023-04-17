@@ -8,7 +8,7 @@
 
     <nuxt-link class="category-list__item" v-for="category in categories" :key="category.code" to="/">
       <div class="category-list__item-image" v-if="category.image" :style="{backgroundImage: `url(${getImgSrc(category)})`}" />
-      <div class="category-list__item-title">{{ category.title }}</div>
+      <div class="category-list__item-title">{{ category.title_ru }}</div>
     </nuxt-link>
 
   </div>
