@@ -41,6 +41,8 @@ export default {
   }
 
   &__back {
+    display: flex;
+    align-items: center;
     color: $color--dark-primary;
   }
 

@@ -4,12 +4,12 @@
     <search-bar :search-text.sync="searchText"/>
     <catalog-item
       title="Все товары"
-      :to="`/catalog/category/${category.code}/subcategory/all`"
+      :to="`/catalog/category/${categoryCode}/subcategory/all`"
       :image="categoryInfo.image"
     />
     <catalog-item
       v-for="subcategory in subcategories" :key="subcategory.code"
-      :to="`/catalog/category/${category.code}/subcategory/${subcategory.code}`"
+      :to="`/catalog/category/${categoryCode}/subcategory/${subcategory.code}`"
       :title="subcategory.title_ru"
     />
   </div>
@@ -37,18 +37,18 @@ export default {
     }),
 
     // Код категории
-    category() {
+    categoryCode() {
       return this.$route.params.category;
     },
 
     // Информацию о категории
     categoryInfo() {
-      return this._getCategory(this.category);
+      return this._getCategory(this.categoryCode);
     },
 
     // Список подкатегорий
     subcategories() {
-      return this._getSubcategories(this.category);
+      return this._getSubcategories(this.categoryCode);
     }
   },
   methods: {
@@ -60,8 +60,8 @@ export default {
     // Заппросить категорию
     async fetchCategory() {
       this.isLoading = true;
-      await this._fetchCategory(this.category);
-      this._fetchSubcategories(this.category);
+      await this._fetchCategory(this.categoryCode);
+      this._fetchSubcategories(this.categoryCode);
       this.isLoading = false;
     }
   },
